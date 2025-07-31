@@ -13,8 +13,11 @@ while True:
     height=int(cap.get(4))
 
     #desenha uma linha no diagonal na tela
-    #0,0 representa w=0,h=0, canto superior esquerdo
+    #0,0 representa w=0,h=0, canto suxperior esquerdo
     img=cv2.line(frame, (0,0), (width,height), (255,0,0), 10)
+
+    #tem como parametro o frame, as posiçoes a ser colocado, o raio, a cor e a espessura (usar -1 qnd for preenchido)
+    img=cv2.circle(img, (width//2, height//2), 100, (0,0,255), 1)
 
     #mostra o frame e nomeia a janela como my camera
     cv2.imshow('my camera', img)
