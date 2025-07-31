@@ -1,13 +1,13 @@
 import cv2
 import numpy as np
 
-# 1. Carregar as imagens
 # A imagem principal onde vamos procurar
 img_principal = cv2.imread('assets/futebol.png', 0)
-# Fazemos uma cópia para desenhar o resultado nela, preservando a original
+
+#copia
 img_para_desenhar = img_principal.copy()
 
-# O template que vamos usar para a busca no caso a bola
+# O template para a busca no caso a bola
 template = cv2.imread('assets/bola.png',0)
 
 
@@ -33,7 +33,7 @@ limiar_confianca = 0.8
 
 if max_val >= limiar_confianca:
     print(f"Bola encontrada com {max_val*100:.2f}% de confiança.")
-    # 4. Desenhar um retângulo ao redor do objeto encontrado
+    # Desenhar um retângulo ao redor do objeto encontrado
     cv2.rectangle(img_para_desenhar, ponto_superior_esquerdo, ponto_inferior_direito, (0, 255, 0), 2)
     
 
