@@ -19,7 +19,7 @@ h, w = template.shape
 # Valores mais altos significam melhor correspondência.
 resultado = cv2.matchTemplate(img_principal, template, cv2.TM_CCOEFF_NORMED)
 
-# 3. Encontrar a melhor correspondência no mapa de calor
+# Encontrar a melhor correspondência no mapa de calor
 # cv2.minMaxLoc nos dá o valor mínimo, máximo e suas localizações no mapa de resultado
 min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(resultado)
 
@@ -36,12 +36,6 @@ if max_val >= limiar_confianca:
     # 4. Desenhar um retângulo ao redor do objeto encontrado
     cv2.rectangle(img_para_desenhar, ponto_superior_esquerdo, ponto_inferior_direito, (0, 255, 0), 2)
     
-    # Escrever o texto de confiança na imagem
-    texto = f"Confianca: {max_val:.2f}"
-    cv2.putText(img_para_desenhar, texto, (ponto_superior_esquerdo[0], ponto_superior_esquerdo[1] - 10), 
-                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-else:
-    print("Nenhuma bola encontrada com confiança suficiente.")
 
 
 cv2.imshow('Resultado', img_para_desenhar)
